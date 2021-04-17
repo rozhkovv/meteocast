@@ -1,25 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react'
+import './assets/style/App.scss'
+import { PopUp } from './components/popup/PopUp'
+import { Settings } from './components/settings/Settings'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// San Francisco
+const DEFAULT_LOCATION = {
+  lat: 33.441792,
+  lon: -94.037689
 }
 
-export default App;
+export function App () {
+  const [mode, setMode] = useState('c')
+  const [location, setLocation] = useState(DEFAULT_LOCATION)
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      const { latitude: lat, longitude: lon } = position.coords
+      setLocation({ lat, lon })
+      console.log('Latitude is :', lat)
+      console.log('Longitude is :', lon)
+    }, (err) => console.log(`ERROR(${err.code}): ${err.message}`), {
+      maximumAge: 60000,
+      timeout: 5000,
+      enableHighAccuracy: true
+    })
+  })
+
+  const page = window.location.hash.substr(1) === 'options' ? 'options' : 'popup'
+  let pageComponent = <PopUp mode={mode} location={location} />
+  if (page === 'options') pageComponent = <Settings updateTheMode={(newMode) => setMode(newMode)} />
+
+  return (
+    <div className="App">
+      {location.lat}
+      {location.lon}
+      {pageComponent}
+    </div>
+  )
+}
+
+export default App
