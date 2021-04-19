@@ -44,7 +44,7 @@ export function App () {
     if (!location) {
       api.location.getLocationIP().then((result) => {
         if (result.data && result.data.city) {
-          setLocation(result.data.city)
+          setLocation(result.data.city ? result.data.city : result.data.country)
           getWeatherTemperature({
             mode,
             location: result.data.city
