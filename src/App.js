@@ -3,6 +3,7 @@ import { createApi } from 'unsplash-js'
 import './assets/style/App.scss'
 import { PopUp } from './components/popup/PopUp'
 import { Settings } from './components/settings/Settings'
+import { Loader } from './components/loader/Loader'
 import { invertColor } from './helperFunctions'
 
 import api from './api/index'
@@ -64,7 +65,7 @@ export function App () {
       temperature={temperature}
       colors={colors}
     />
-  ) : (<div>Loading...</div>)
+  ) : (<Loader />)
   if (page === 'options') pageComponent = <Settings updateTheMode={(newMode) => setMode(newMode)} />
 
   return (

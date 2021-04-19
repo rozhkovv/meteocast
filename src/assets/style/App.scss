@@ -48,6 +48,21 @@ body {
   }
 }
 
+// Loader
+.cwa-loader {
+  position: relative;
+  width: 300px;
+  height: 350px;
+  background: #000; // #3f8bea
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    height: 70px;
+    width: 70px;
+  }
+}
 
 // PopUp
 .cwa-popup {
