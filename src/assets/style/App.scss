@@ -88,7 +88,7 @@ body {
   &__location {
     font-size: 18px;
     text-align: left;
-    padding: 0 30px;
+    padding: 0;
     position: relative;
     z-index: 2;
     display: flex;
@@ -105,10 +105,10 @@ body {
   }
 
   &__temperature {
-    font-size: 60px;
+    font-size: 50px;
     font-weight: bold;
     text-align: left;
-    padding: 0 31px;
+    padding: 0;
     position: relative;
     z-index: 2;
   }
@@ -160,12 +160,13 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 20px 0;
+    padding: 20px 10px;
 
     &-bg {
       position: absolute;
       height: 100%;
       width: 100%;
+      left: 0;
       opacity: .4;
       z-index: 0;
     }

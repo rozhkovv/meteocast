@@ -44,11 +44,12 @@ export function App () {
   useEffect(() => {
     if (!location) {
       api.location.getLocationIP().then((result) => {
-        if (result.data && result.data.city) {
-          setLocation(result.data.city ? result.data.city : result.data.country)
+        const locationName = result.data.city ? result.data.city : result.data.country
+        if (result.data && locationName) {
+          setLocation(locationName)
           getWeatherTemperature({
             mode,
-            location: result.data.city
+            location: locationName
           })
         }
       })
