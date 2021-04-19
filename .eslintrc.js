@@ -24,6 +24,7 @@ module.exports = {
     'space-before-function-paren': ['error', 'always'],
     'react/jsx-filename-extension': [1, { 'extensions': ['.js', '.jsx'] }],
     'comma-dangle': ['error', 'never'],
-    'arrow-body-style': ['error', 'as-needed']
+    'arrow-body-style': ['error', 'as-needed'],
+    'no-bitwise': ['error', { 'allow': ['^']}]
   },
 };

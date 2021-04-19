@@ -1,42 +1,49 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import api from '../../api/index'
-
-// const getCityName = (event = null) => {
-//   if (event) {
-//     // const response = api.getWeatherByLocation(event.target.value)
-//     const response = api.getWeatherCondition(event.target.value)
-//     console.log(response)
-//   }
-//   return 'San Francisco'
-// }
-
-// const getWeatherTemperature = ({ mode, location }) => {
-//   const response = api.weather.getWeatherCondition(location)
-//   console.log(response)
-//   return mode === 'c' ? 18 : 58
-// }
 
 export function PopUp (props) {
-  const { location, weatherConditions } = props
-  // const cityName = getCityName()
+  const {
+    location,
+    weatherConditions,
+    temperature,
+    backgroundPhoto,
+    colors
+  } = props
+
   return (
-    <div className="cwa-popup red">
-      <div className="cwa-popup__city">{location}</div>
-      <div className="cwa-popup__temperature">
-        {weatherConditions}
-        °
+    <div className="cwa-popup" style={{ color: colors.inverted }}>
+      <div className="cwa-popup__background" style={{ backgroundImage: `url(${backgroundPhoto})` }}>
+        <div className="cwa-popup__icon">
+          <div className="cwa-popup__icon-bg" style={{ backgroundColor: colors.inverted }} />
+          <img
+            src={`http://openweathermap.org/img/wn/${weatherConditions.weather[0].icon}@4x.png`}
+            alt={weatherConditions.weather[0].main}
+          />
+        </div>
+        <div className="cwa-popup__info-content">
+          <div className="cwa-popup__info-content-bg" style={{ backgroundColor: colors.regular }} />
+          <div className="cwa-popup__location">
+            <span className="cwa-popup__city">{location}</span>
+            <span className="cwa-popup__state">{weatherConditions.weather[0].description}</span>
+          </div>
+          <div className="cwa-popup__temperature">
+            {temperature}
+            °
+          </div>
+        </div>
+
       </div>
+
     </div>
   )
 }
 
 PopUp.propTypes = {
   location: PropTypes.string.isRequired,
-  weatherConditions: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.number
-  ]).isRequired
+  temperature: PropTypes.number.isRequired,
+  weatherConditions: PropTypes.isRequired,
+  backgroundPhoto: PropTypes.string.isRequired,
+  colors: PropTypes.isRequired
 }
 
 export default PopUp
