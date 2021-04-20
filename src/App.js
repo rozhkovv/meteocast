@@ -37,6 +37,13 @@ export function App () {
       setWeatherTemperature(Math.round(response.data.main.temp))
       setWeatherConditions(response.data)
       getBackgroundPhoto(response.data.weather[0].main)
+      // eslint-disable-next-line no-undef
+      if (chrome) {
+        // eslint-disable-next-line no-undef
+        chrome.runtime.sendMessage({ message: 'updateIcon', icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png` }, (res) => {
+          console.log('Update icon: ', res)
+        })
+      }
     })
     return '...'
   }
