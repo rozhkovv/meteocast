@@ -11,7 +11,7 @@ export function PopUp (props) {
   } = props
 
   return (
-    <div className="cwa-popup" style={{ color: colors.inverted }}>
+    <div className="cwa-popup">
       <div className="cwa-popup__background" style={{ backgroundImage: `url(${backgroundPhoto})` }}>
         <div className="cwa-popup__icon">
           <div className="cwa-popup__icon-bg" style={{ backgroundColor: colors.inverted }} />
@@ -21,7 +21,7 @@ export function PopUp (props) {
           />
         </div>
         <div className="cwa-popup__info-content">
-          <div className="cwa-popup__info-content-bg" style={{ backgroundColor: colors.regular }} />
+          <div className="cwa-popup__info-content-bg" />
           <div className="cwa-popup__location">
             <span className="cwa-popup__city">{location}</span>
             <span className="cwa-popup__state">{weatherConditions.weather[0].description}</span>

@@ -71,6 +71,7 @@ body {
   height: 350px;
   display: flex;
   flex-direction: column-reverse;
+  color: black;
 
   &__background {
     background-size: cover;
@@ -163,6 +164,7 @@ body {
     padding: 20px 10px;
 
     &-bg {
+      background-color: white;
       position: absolute;
       height: 100%;
       width: 100%;
